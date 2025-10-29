@@ -2,6 +2,29 @@ version: 2
 
 sources:
   - name: raw_data_circle
+    description: Circle dataset
     tables:
       - name: raw_cc_sales
+        description: sales data
       - name: raw_cc_stock
+        description: stock data
+        columns:
+          - name: size
+            tests:
+              - accepted_values:
+                  values: ['XS', 'S', 'M', 'L', 'XL', 'XXL']
+
+models:
+  - name: stg_raw_data_circle__raw_cc_sales
+    description: model for sales raw data
+  - name: stg_raw_data_circle__raw_cc_stock
+    description: model for raw stock data
+    columns:
+      - name: product_id
+        tests:
+          - unique
+  - name: merged
+    description: Merged tables and selected columns
+    columns:
+      - name: product_id
+        description: Unique id for products
