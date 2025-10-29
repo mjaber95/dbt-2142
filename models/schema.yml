@@ -28,3 +28,5 @@ models:
     columns:
       - name: product_id
         description: Unique id for products
+  - name: aggregated
+    description: aggregated sales data 
